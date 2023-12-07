@@ -1,10 +1,28 @@
+import 'dotenv/config';
+
 import path from "node:path";
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 import Fastify from 'fastify'
 import FastifyStaticPlugin from '@fastify/static';
+import FastifyCookiePlugin from '@fastify/cookie';
+import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 
-const app = Fastify();
+import { initializeDatabase } from "./database";
+import auth from "./routes/auth";
+import articles from "./routes/articles";
+
+initializeDatabase();
+const app = Fastify().withTypeProvider<TypeBoxTypeProvider>()
+
+app.setErrorHandler(function (error, request, reply) {
+  // On affiche les erreurs de validation.
+  if (error.validation) {
+     reply.status(400).send(new Error("Des propriétés sont manquantes ou invalides."))
+  }
+
+  reply.send(error);
+})
 
 // On handle uniquement le statique en production.
 if (process.env.NODE_ENV === 'prod') {
@@ -12,6 +30,19 @@ if (process.env.NODE_ENV === 'prod') {
     root: path.join(__dirname, '../dist/public')
   });
 }
+
+app.register(FastifyCookiePlugin, {
+  secret: process.env.COOKIE_SECRET as string
+});
+
+// On enregistre les routes.
+app.post('/api/auth/register', auth.register);
+app.post('/api/auth/login', auth.login);
+app.get('/api/auth/check', auth.check);
+app.get('/api/auth/logout', auth.logout);
+app.post('/api/articles/create', articles.create);
+app.post('/api/articles/patch', articles.patch);
+app.post('/api/articles/read', articles.read);
 
 app.listen({ port: 8000 }, function (err, address) {
   if (err) {
