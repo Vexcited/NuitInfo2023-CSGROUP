@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "start": "pnpm --filter @nuit-info-csgroup/backend run start",
     "dev": "concurrently \"pnpm --filter @nuit-info-csgroup/frontend run dev\" \"pnpm --filter @nuit-info-csgroup/backend run dev\"",
     "build": "pnpm --filter @nuit-info-csgroup/frontend run build && pnpm --filter @nuit-info-csgroup/backend run build && node ./scripts/rename-build.js"
   },

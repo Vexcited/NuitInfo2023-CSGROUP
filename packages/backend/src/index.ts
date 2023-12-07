@@ -6,9 +6,12 @@ import FastifyStaticPlugin from '@fastify/static';
 
 const app = Fastify();
 
-app.register(FastifyStaticPlugin, {
-  root: path.join(__dirname, '../dist/public')
-});
+// On handle uniquement le statique en production.
+if (process.env.NODE_ENV === 'prod') {
+  app.register(FastifyStaticPlugin, {
+    root: path.join(__dirname, '../dist/public')
+  });
+}
 
 app.listen({ port: 8000 }, function (err, address) {
   if (err) {
