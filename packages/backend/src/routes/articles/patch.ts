@@ -29,7 +29,7 @@ export const articlesPatchHandler = async (req: FastifyRequest<{
    * on vérifie que le nouveau titre est différent de l'ancien.
    * Aussi, on vérifie que le nouveau titre est valide.
    */
-  if ("title" in req.body && req.body.title !== article.title) {
+  if ("title" in req.body) {
     if (!req.body.title) throw new Error("Le titre est invalide.");
     article.title = req.body.title;
 
@@ -42,7 +42,7 @@ export const articlesPatchHandler = async (req: FastifyRequest<{
    * on vérifie que le nouveau titre est différent de l'ancien.
    * Aussi, on vérifie que le nouveau titre est valide.
    */
-  if ("content" in req.body && req.body.content !== article.content) {
+  if ("content" in req.body) {
     if (!req.body.content) throw new Error("Le contenu est invalide.");
     article.content = req.body.content;
   }
@@ -51,7 +51,7 @@ export const articlesPatchHandler = async (req: FastifyRequest<{
    * Si on veut mettre à jour la propriété `private`,
    * on vérifie que la nouvelle valeur est différente de l'ancienne.
    */
-  if ("private" in req.body && req.body.private !== Boolean(article.private)) {
+  if ("private" in req.body) {
     if (typeof req.body.private !== "boolean") throw new Error("La propriété `private` est invalide.");
     article.private = getBooleanAsInteger(req.body.private);
   }
@@ -60,7 +60,7 @@ export const articlesPatchHandler = async (req: FastifyRequest<{
    * Si on veut mettre à jour la propriété `allow_comments`,
    * on vérifie que la nouvelle valeur est différente de l'ancienne.
    */
-  if ("allow_comments" in req.body && req.body.allow_comments !== Boolean(article.allow_comments)) {
+  if ("allow_comments" in req.body) {
     if (typeof req.body.allow_comments !== "boolean") throw new Error("La propriété `allow_comments` est invalide.");
     article.allow_comments = getBooleanAsInteger(req.body.allow_comments);
   }

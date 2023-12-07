@@ -11,6 +11,7 @@ import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 import { initializeDatabase } from "./database";
 import auth from "./routes/auth";
 import articles from "./routes/articles";
+import comments from "./routes/comments";
 
 initializeDatabase();
 const app = Fastify().withTypeProvider<TypeBoxTypeProvider>()
@@ -43,6 +44,10 @@ app.get('/api/auth/logout', auth.logout);
 app.post('/api/articles/create', articles.create);
 app.post('/api/articles/patch', articles.patch);
 app.post('/api/articles/read', articles.read);
+app.post('/api/articles/delete', articles.delete);
+app.post('/api/comments/page', comments.page);
+app.post('/api/comments/write', comments.write);
+app.post('/api/comments/delete', comments.delete);
 
 app.listen({ port: 8000 }, function (err, address) {
   if (err) {

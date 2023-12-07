@@ -1,6 +1,7 @@
 import { articlesCreateHandler, articlesCreateBodySchema } from "./create"
 import { articlesPatchHandler, articlesPatchBodySchema } from "./patch";
 import { articlesReadHandler, articlesReadBodySchema } from "./read";
+import { articlesDeleteHandler, articlesDeleteBodySchema } from "./delete";
 
 const articles = {
   create: {
@@ -21,6 +22,12 @@ const articles = {
       body: articlesReadBodySchema
     }
   },
+  delete: {
+    handler: articlesDeleteHandler,
+    schema: {
+      body: articlesDeleteBodySchema
+    }
+  }
 }
 
 export default articles;

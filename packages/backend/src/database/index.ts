@@ -28,18 +28,17 @@ CREATE TABLE IF NOT EXISTS articles (
   created_at DATE NOT NULL,
   updated_at DATE NOT NULL,
   user_id INTEGER NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS comments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  content TEXT NOT NULL,
+  content VARCHAR(4096) NOT NULL, -- On limite la taille du contenu à 4096 caractères.
   created_at DATE NOT NULL,
-  updated_at DATE NOT NULL,
   user_id INTEGER NOT NULL,
-  post_id INTEGER NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (post_id) REFERENCES articles(id)
+  article_id INTEGER NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE
 );
   `.trim());
 }

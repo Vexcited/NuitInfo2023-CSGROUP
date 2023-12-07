@@ -44,4 +44,14 @@ export const updateArticle = (updated_article: Article): void => {
   if (results.changes === 0) {
     throw new Error("L'article n'a pas été mis à jour.");
   }
+};
+
+export const deleteArticle = (articleID: number): void => {
+  const results = db
+    .prepare("DELETE FROM articles WHERE id = ?")
+    .run(articleID);
+
+  if (results.changes === 0) {
+    throw new Error("L'article n'a pas été supprimé.");
+  }
 }
