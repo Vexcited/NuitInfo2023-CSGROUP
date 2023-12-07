@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+    },
+
+    /* Emit */
+    "inlineSourceMap": true,
+    "outDir": "./dist",
+    
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    
+    /* Type Checking */
+    "strict": true
+  },
+
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
