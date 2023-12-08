@@ -1,8 +1,8 @@
-import { articlesCreateHandler, articlesCreateBodySchema } from "./create"
-import { articlesPatchHandler, articlesPatchBodySchema } from "./patch";
-import { articlesReadHandler, articlesReadBodySchema } from "./read";
-import { articlesDeleteHandler, articlesDeleteBodySchema } from "./delete";
-import { articlesPageHandler, articlesPageBodySchema } from "./page";
+import { articlesCreateHandler, articlesCreateBodySchema } from "./create.js"
+import { articlesPatchHandler, articlesPatchBodySchema } from "./patch.js";
+import { articlesReadHandler, articlesReadBodySchema } from "./read.js";
+import { articlesDeleteHandler, articlesDeleteBodySchema } from "./delete.js";
+import { articlesPageHandler, articlesPageBodySchema } from "./page.js";
 
 const articles = {
   create: {

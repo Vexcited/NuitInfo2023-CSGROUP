@@ -1,9 +1,9 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Type, Static } from '@sinclair/typebox'
 
-import { checkAuth } from "~/utils/checkAuth";
-import { getArticle, updateArticle } from "~/database/articles";
-import getBooleanAsInteger from "~/utils/getBooleanAsInteger";
+import { checkAuth } from "~/utils/checkAuth.js";
+import { getArticle, updateArticle } from "~/database/articles.js";
+import getBooleanAsInteger from "~/utils/getBooleanAsInteger.js";
 
 export const articlesPatchBodySchema = Type.Object({
   article_id: Type.Number(),

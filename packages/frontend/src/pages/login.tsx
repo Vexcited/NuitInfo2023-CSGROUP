@@ -1,8 +1,8 @@
 import { type Component, createSignal, Show } from "solid-js";
 import { A, Navigate } from "@solidjs/router";
-import { authenticateUser } from "../api/auth";
-import { APIError } from "../api";
-import { currentUser, setCurrentUser } from "../store/user";
+import { authenticateUser } from "../api/auth.js";
+import { APIError } from "../api/index.js";
+import { currentUser, setCurrentUser } from "../store/user.js";
 
 import { TextField } from "@kobalte/core";
 

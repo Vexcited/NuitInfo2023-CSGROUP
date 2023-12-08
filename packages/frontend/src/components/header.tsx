@@ -19,7 +19,7 @@ const Header: Component = () => {
         </A>
       </h1>
 
-      <div>
+      <div class="flex items-center gap-4">
         <Show when={!currentUserLoading()}>
           <Show when={currentUser()}
             fallback={

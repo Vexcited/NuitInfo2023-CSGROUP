@@ -1,6 +1,6 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { checkAuth } from "~/utils/checkAuth";
+import { checkAuth } from "~/utils/checkAuth.js";
 
 export const authCheckHandler = async (req: FastifyRequest, res: FastifyReply) => {
   const user = await checkAuth(req);

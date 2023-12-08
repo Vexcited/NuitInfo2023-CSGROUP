@@ -1,8 +1,8 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Type, Static } from '@sinclair/typebox'
 
-import { checkAuth } from "~/utils/checkAuth";
-import { deleteArticle, getArticle } from "~/database/articles";
+import { checkAuth } from "~/utils/checkAuth.js";
+import { deleteArticle, getArticle } from "~/database/articles.js";
 
 export const articlesDeleteBodySchema = Type.Object({
   article_id: Type.Number()

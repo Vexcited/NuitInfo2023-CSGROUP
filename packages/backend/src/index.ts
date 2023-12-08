@@ -8,10 +8,10 @@ import FastifyStaticPlugin from '@fastify/static';
 import FastifyCookiePlugin from '@fastify/cookie';
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
 
-import { initializeDatabase } from "./database";
-import auth from "./routes/auth";
-import articles from "./routes/articles";
-import comments from "./routes/comments";
+import { initializeDatabase } from "./database/index.js";
+import auth from "./routes/auth/index.js";
+import articles from "./routes/articles/index.js";
+import comments from "./routes/comments/index.js";
 
 initializeDatabase();
 const app = Fastify().withTypeProvider<TypeBoxTypeProvider>()

@@ -1,7 +1,7 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Type, Static } from '@sinclair/typebox'
 
-import { createUser } from "~/database/users";
+import { createUser } from "~/database/users.js";
 
 export const authRegisterBodySchema = Type.Object({
   username: Type.String(),

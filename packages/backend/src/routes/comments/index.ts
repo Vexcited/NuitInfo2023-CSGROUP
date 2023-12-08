@@ -1,6 +1,6 @@
-import { commentsPageBodySchema, commentsPageHandler } from "./page";
-import { commentsWriteBodySchema, commentsWriteHandler } from "./write";
-import { commentsDeleteBodySchema, commentsDeleteHandler } from "./delete";
+import { commentsPageBodySchema, commentsPageHandler } from "./page.js";
+import { commentsWriteBodySchema, commentsWriteHandler } from "./write.js";
+import { commentsDeleteBodySchema, commentsDeleteHandler } from "./delete.js";
 
 const comments = {
   page: {

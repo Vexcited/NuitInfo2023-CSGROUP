@@ -1,8 +1,8 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Type, Static } from '@sinclair/typebox'
 
-import { checkAuth, getTokenCookieName } from "~/utils/checkAuth";
-import { Article, getArticlesFromID } from "~/database/articles";
+import { checkAuth, getTokenCookieName } from "~/utils/checkAuth.js";
+import { Article, getArticlesFromID } from "~/database/articles.js";
 
 export const articlesPageBodySchema = Type.Object({
   /**

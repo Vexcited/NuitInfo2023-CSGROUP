@@ -1,7 +1,7 @@
 import type { FastifyRequest } from 'fastify';
 
 import jwt from "jsonwebtoken";
-import { type User, getUser } from "~/database/users";
+import { type User, getUser } from "~/database/users.js";
 
 export const getTokenCookieName = () => {
   let cookie_name = "token";

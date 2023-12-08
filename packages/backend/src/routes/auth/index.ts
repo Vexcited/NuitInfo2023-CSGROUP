@@ -1,7 +1,7 @@
-import { authRegisterHandler, authRegisterBodySchema } from "./register";
-import { authLoginHandler, authLoginBodySchema } from "./login";
-import { authCheckHandler } from "./check";
-import { authLogoutHandler } from "./logout";
+import { authRegisterHandler, authRegisterBodySchema } from "./register.js";
+import { authLoginHandler, authLoginBodySchema } from "./login.js";
+import { authCheckHandler } from "./check.js";
+import { authLogoutHandler } from "./logout.js";
 
 const auth = {
   register: {

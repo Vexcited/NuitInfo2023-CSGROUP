@@ -1,8 +1,8 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Type, Static } from '@sinclair/typebox'
 
-import { checkAuth } from "~/utils/checkAuth";
-import { createInitialArticle } from "~/database/articles";
+import { checkAuth } from "~/utils/checkAuth.js";
+import { createInitialArticle } from "~/database/articles.js";
 
 export const articlesCreateBodySchema = Type.Object({
   title: Type.String(),

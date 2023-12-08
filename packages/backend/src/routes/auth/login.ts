@@ -3,7 +3,7 @@ import { Type, Static } from '@sinclair/typebox'
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { getUser } from "~/database/users";
+import { getUser } from "~/database/users.js";
 
 export const authLoginBodySchema = Type.Object({
   username: Type.String(),

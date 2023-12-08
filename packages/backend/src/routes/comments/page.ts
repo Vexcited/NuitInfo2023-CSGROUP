@@ -1,9 +1,9 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Type, Static } from '@sinclair/typebox'
 
-import { checkAuth } from "~/utils/checkAuth";
-import { getArticle } from "~/database/articles";
-import { getCommentsFromCommentID } from "~/database/comments";
+import { checkAuth } from "~/utils/checkAuth.js";
+import { getArticle } from "~/database/articles.js";
+import { getCommentsFromCommentID } from "~/database/comments.js";
 
 export const commentsPageBodySchema = Type.Object({
   article_id: Type.Number(),

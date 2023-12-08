@@ -1,4 +1,4 @@
-import db from ".";
+import db from "./index.js";
 import bcrypt from "bcrypt";
 
 export const createUser = async (username: string, raw_password: string) => {

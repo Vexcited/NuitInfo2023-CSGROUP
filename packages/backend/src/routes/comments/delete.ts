@@ -1,8 +1,8 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { Type, Static } from '@sinclair/typebox'
 
-import { checkAuth } from "~/utils/checkAuth";
-import { getComment, deleteComment } from "~/database/comments";
+import { checkAuth } from "~/utils/checkAuth.js";
+import { getComment, deleteComment } from "~/database/comments.js";
 
 export const commentsDeleteBodySchema = Type.Object({
   comment_id: Type.Number()

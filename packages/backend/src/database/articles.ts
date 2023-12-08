@@ -1,4 +1,4 @@
-import getBooleanAsInteger from "~/utils/getBooleanAsInteger";
+import getBooleanAsInteger from "~/utils/getBooleanAsInteger.js";
 import db from ".";
 
 export const createInitialArticle = (title: string, privateArticle: boolean, allowComments: boolean, fromUserID: number) => {
@@ -78,6 +78,5 @@ export const getArticlesFromID = (article_id?: number): Article[] => {
       .all() as Article[];
   }
 
-  console.log(results);
   return results;  
 };
