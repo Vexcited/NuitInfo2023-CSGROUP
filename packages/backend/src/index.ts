@@ -7,7 +7,9 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname);
 import Fastify, { type FastifyInstance } from 'fastify'
 import FastifyStaticPlugin from '@fastify/static';
 import FastifyCookiePlugin from '@fastify/cookie';
-import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
+import FastifyHelmetPlugin from '@fastify/helmet';
+import FastifyRateLimitPlugin from '@fastify/rate-limit';
+import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 
 import { initializeDatabase } from "./database/index.js";
 import auth from "./routes/auth/index.js";
@@ -24,10 +26,10 @@ if (process.env.NODE_ENV === 'prod') {
       key: fs.readFileSync(path.join(__dirname, '..', 'nuit-info.dev-key.pem')),
       cert: fs.readFileSync(path.join(__dirname, '..', 'nuit-info.dev.pem'))
     } 
-  })
+  });
 }
 else {
-  app = Fastify()
+  app = Fastify();
 }
 
 app.withTypeProvider<TypeBoxTypeProvider>()
@@ -46,6 +48,17 @@ if (process.env.NODE_ENV === 'prod') {
     root: path.join(__dirname, '../dist/public')
   });
 }
+
+// Implement security headers.
+app.register(FastifyHelmetPlugin, {
+  xFrameOptions: { action: "deny" }
+});
+
+// Implement rate-limit
+app.register(FastifyRateLimitPlugin, {
+  max: 25,
+  timeWindow: '1 minute'
+});
 
 app.register(FastifyCookiePlugin, {
   secret: process.env.COOKIE_SECRET as string
