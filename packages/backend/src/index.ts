@@ -1,9 +1,10 @@
 import 'dotenv/config';
 
+import fs from "node:fs";
 import path from "node:path";
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-import Fastify from 'fastify'
+import Fastify, { type FastifyInstance } from 'fastify'
 import FastifyStaticPlugin from '@fastify/static';
 import FastifyCookiePlugin from '@fastify/cookie';
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox'
@@ -14,12 +15,26 @@ import articles from "./routes/articles/index.js";
 import comments from "./routes/comments/index.js";
 
 initializeDatabase();
-const app = Fastify().withTypeProvider<TypeBoxTypeProvider>()
+let app: FastifyInstance;
 
+if (process.env.NODE_ENV === 'prod') {
+  app = Fastify({
+    logger: true,
+    https: {
+      key: fs.readFileSync(path.join(__dirname, '..', 'nuit-info.dev-key.pem')),
+      cert: fs.readFileSync(path.join(__dirname, '..', 'nuit-info.dev.pem'))
+    } 
+  })
+}
+else {
+  app = Fastify()
+}
+
+app.withTypeProvider<TypeBoxTypeProvider>()
 app.setErrorHandler(function (error, request, reply) {
   // On affiche les erreurs de validation.
   if (error.validation) {
-     reply.status(400).send(new Error("Des propriétés sont manquantes ou invalides."))
+    reply.status(400).send(new Error("Des propriétés sont manquantes ou invalides."))
   }
 
   reply.send(error);
@@ -50,7 +65,7 @@ app.post('/api/comments/page', comments.page);
 app.post('/api/comments/write', comments.write);
 app.post('/api/comments/delete', comments.delete);
 
-app.listen({ port: 8000 }, function (err, address) {
+app.listen({ port: process.env.NODE_ENV === 'prod' ? 443 : 8000 }, function (err, address) {
   if (err) {
     app.log.error(err)
     process.exit(1)
