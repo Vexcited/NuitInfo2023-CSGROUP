@@ -23,6 +23,10 @@ Un site minimaliste de publication d'articles, sur le thème de la nuit et de l'
 - [ ] `X-Frame-Options` : Enlève la possibilité de faire des `iframe` avec la page.
 - [x] [Cookie Tossing](https://book.hacktricks.xyz/pentesting-web/hacking-with-cookies/cookie-tossing) avec le préfixe [`__Host-`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#secure) pour les cookies sensibles (ex.: `token`)
 
+## Démo
+
+https://github.com/Vexcited/NuitInfo2023-CSGROUP/assets/59152884/290e5075-a4c1-4eee-99a8-3f867e314f74
+
 ## Requis
 
 - Node.js v20
