@@ -19,7 +19,7 @@ Un site minimaliste de publication d'articles, sur le thème de la nuit et de l'
 
 ## Démo
 
-https://github.com/Vexcited/NuitInfo2023-CSGROUP/assets/59152884/290e5075-a4c1-4eee-99a8-3f867e314f74
+https://github.com/Vexcited/NuitInfo2023-CSGROUP/assets/59152884/d4d4d7d0-b7ad-466d-95b0-c7ec2d8f4aa7
 
 ## Requis
 
