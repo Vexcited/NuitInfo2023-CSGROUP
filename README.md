@@ -27,8 +27,18 @@ https://github.com/Vexcited/NuitInfo2023-CSGROUP/assets/59152884/d4d4d7d0-b7ad-4
 
 ## Installation
 
-A faire.
+```bash
+pnpm install
+pnpm build
+
+# Ne pas oublier de faire des certificats SSL pour les passer au
+# serveur fastify dans /packages/backend/src/index.ts
+pnpm start
+```
 
 ## Développement
 
-A faire.
+```bash
+# Lance le serveur en mode développement sans HTTPS.
+pnpm dev
+```
