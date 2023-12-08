@@ -17,7 +17,8 @@
 
     "types": [
       "vite/client",
-      "vite-plugin-pages/client-solid"
+      "vite-plugin-pages/client-solid",
+      "unplugin-icons/types/solid"
     ],
 
     /* Linting */

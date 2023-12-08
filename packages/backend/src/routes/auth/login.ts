@@ -16,12 +16,10 @@ export const authLoginHandler = async (req: FastifyRequest<{
   const { username, password } = req.body;
 
   // On vérifie que la taille du nom d'utilisateur est limité à 48 caractères.
-  if (username.length < 3) throw new Error("Le nom d'utilisateur est trop court.");
-  else if (username.length > 48) throw new Error("Le nom d'utilisateur est trop long.");
+  if (username.length > 48) throw new Error("Le nom d'utilisateur est trop long.");
   
   // On vérifie que la taille du mot de passe est limité à 64 caractères.
-  if (password.length < 8) throw new Error("Le mot de passe est trop court.");
-  else if (password.length > 64) throw new Error("Le mot de passe est trop long.");
+  if (password.length > 64) throw new Error("Le mot de passe est trop long.");
 
   const user = await getUser(username);
   if (!user) throw new Error("L'utilisateur n'existe pas.");
@@ -60,5 +58,8 @@ export const authLoginHandler = async (req: FastifyRequest<{
     signed: true
   });
 
-  res.status(200).send();
+  res.status(200).send({
+    username: user.username,
+    id: user.id
+  });
 };
