@@ -54,4 +54,30 @@ export const deleteArticle = (articleID: number): void => {
   if (results.changes === 0) {
     throw new Error("L'article n'a pas été supprimé.");
   }
-}
+};
+
+/**
+ * On récupère les commentaires d'un article 20 par 20,
+ * à partir d'un ID de commentaire. Si aucun ID n'est
+ * spécifié, on récupère les 20 derniers commentaires.
+ * 
+ * A noter, qu'ici on ne donne pas la propriété "content"
+ * pour éviter d'envoyer des informations que l'on n'utilise pas.
+ */
+export const getArticlesFromID = (article_id?: number): Article[] => {
+  let results: Article[];
+
+  if (typeof article_id === "number") {
+    results = db
+      .prepare("SELECT allow_comments,updated_at,id,private,user_id,title FROM articles WHERE id < ? ORDER BY id DESC LIMIT 20")
+      .all(article_id) as Article[];
+  }
+  else {
+    results = db
+      .prepare("SELECT allow_comments,updated_at,id,private,user_id,title FROM articles ORDER BY id DESC LIMIT 20")
+      .all() as Article[];
+  }
+
+  console.log(results);
+  return results;  
+};

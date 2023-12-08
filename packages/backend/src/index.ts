@@ -45,6 +45,7 @@ app.post('/api/articles/create', articles.create);
 app.post('/api/articles/patch', articles.patch);
 app.post('/api/articles/read', articles.read);
 app.post('/api/articles/delete', articles.delete);
+app.post('/api/articles/page', articles.page);
 app.post('/api/comments/page', comments.page);
 app.post('/api/comments/write', comments.write);
 app.post('/api/comments/delete', comments.delete);

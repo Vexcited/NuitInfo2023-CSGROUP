@@ -86,6 +86,7 @@ const SignupPage: Component = () => {
             {loading() ? "Inscription..." : "S'inscrire"}
           </button>
         </form>
+
         <A href="/" class="text-sm hover:underline text-gray-600 hover:text-blue">
           Revenir à la page d'accueil
         </A>

@@ -100,6 +100,9 @@ importers:
       unocss:
         specifier: ^0.58.0
         version: 0.58.0(postcss@8.4.32)(vite@4.5.1)
+      unocss-preset-primitives:
+        specifier: 0.0.1-beta.13
+        version: 0.0.1-beta.13
       unplugin-icons:
         specifier: ^0.18.1
         version: 0.18.1
@@ -1188,6 +1191,10 @@ packages:
     dependencies:
       '@unocss/core': 0.58.0
       unconfig: 0.3.11
+    dev: true
+
+  /@unocss/core@0.57.7:
+    resolution: {integrity: sha512-1d36M0CV3yC80J0pqOa5rH1BX6g2iZdtKmIb3oSBN4AWnMCSrrJEPBrUikyMq2TEQTrYWJIVDzv5A9hBUat3TA==}
     dev: true
 
   /@unocss/core@0.58.0:
@@ -3661,6 +3668,12 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
+
+  /unocss-preset-primitives@0.0.1-beta.13:
+    resolution: {integrity: sha512-YVJXidCgV1OhlAb3786elQzZsMHTUhDqoie6drv/7biiEt6I1pKRmQfbrZ7IUy5EHsNnPj4Qvdo8wB5gR9EPLg==}
+    dependencies:
+      '@unocss/core': 0.57.7
     dev: true
 
   /unocss@0.58.0(postcss@8.4.32)(vite@4.5.1):
