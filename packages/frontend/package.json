@@ -20,7 +20,7 @@
     "unocss": "^0.58.0",
     "unocss-preset-primitives": "0.0.1-beta.13",
     "unplugin-icons": "^0.18.1",
-    "vite": "^4.5.1",
+    "vite": "^4.5.2",
     "vite-plugin-pages": "^0.32.0",
     "vite-plugin-solid": "^2.7.2"
   }
